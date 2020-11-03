@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 import { MapContainer } from './GoogleMaps';
+import axios from "axios"
 
 class Accueil extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            medecins : [] // state : tableau de medecins 
+        }
+    }
+    // fonction qui va récuperer l'ensemble des médecins 
+    // ici on fait un lien direct entre l'appli react et le web service 
+    componentDidMount() {
+        axios.get('http://localhost:3030/medecins').then(res => {
+            //Le resultat est stocké dans clé data
+            if(res.data.error == false) {
+                this.setState({
+                    medecins : res.data.medecins
+                })
+            }
+        })
     }
     render() {
         return (
