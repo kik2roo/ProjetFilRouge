@@ -32,6 +32,7 @@ class Accueil extends Component {
                             <button type="button" className="btn btn-outline-warning m-4">Rechercher</button>
                         </div>
                     </form>
+        <div>{this.state.medecins.map(m =>(<div>{m.nom}</div>))}</div>
                 </div>
                 <div className="text-center">
                     <h2>Pourquoi prendre rendez-vous avec Doctolib ?</h2>
